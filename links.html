@@ -8,42 +8,43 @@
         :root {
             --neon-blue: #00d2ff;
             --bg-dark: #050505;
-            --glass-bg: rgba(255, 255, 255, 0.02);
+            --glass-bg: rgba(0, 0, 0, 0.4);
         }
 
-        /* Floating Animation */
         @keyframes masterFloat {
             0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
+            50% { transform: translateY(-20px); }
             100% { transform: translateY(0px); }
+        }
+
+        #bg-video {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover; z-index: -1; background: #000;
         }
 
         body {
             margin: 0;
             font-family: 'Segoe UI', sans-serif;
-            background-color: var(--bg-dark);
             color: white;
             display: flex;
-            justify-content: center; /* Screen ke beech mein */
-            align-items: center; /* Screen ke beech mein */
+            justify-content: center;
+            align-items: center;
             min-height: 100vh;
-            background: radial-gradient(circle at center, #111 0%, #000 100%);
             overflow-x: hidden;
             padding: 20px;
             box-sizing: border-box;
         }
 
-        /* Main Wrapper jo float karega */
         .network-container {
             width: 100%;
-            max-width: 420px;
-            animation: masterFloat 5s ease-in-out infinite; /* Full content float */
+            max-width: 450px;
+            animation: masterFloat 5s ease-in-out infinite;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
-        /* Glow Title */
         h1 { 
             font-size: 1.6rem; 
             letter-spacing: 6px; 
@@ -56,7 +57,7 @@
         .section-title {
             width: 100%;
             font-size: 0.75rem;
-            color: var(--neon-blue); /* Lines glow karengi */
+            color: var(--neon-blue);
             margin: 25px 0 12px 5px;
             text-transform: uppercase;
             letter-spacing: 3px;
@@ -69,7 +70,7 @@
         .link-card {
             width: 100%;
             background: var(--glass-bg);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 18px;
             padding: 18px;
             margin-bottom: 14px;
@@ -80,134 +81,115 @@
             color: white;
             transition: all 0.4s ease;
             box-sizing: border-box;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
         }
 
         .link-card:hover {
-            background: rgba(0, 210, 255, 0.06);
+            background: rgba(0, 210, 255, 0.1);
             border-color: var(--neon-blue);
-            box-shadow: 0 0 20px rgba(0, 210, 255, 0.2);
-            transform: scale(1.03);
+            box-shadow: 0 0 20px rgba(0, 210, 255, 0.3);
         }
 
         .info-grp { display: flex; flex-direction: column; }
-        
-        /* Main Lines (Names) Glow */
-        .name { 
-            font-weight: bold; 
-            font-size: 1rem; 
-            letter-spacing: 1px; 
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
-        }
-        
-        .link-card:hover .name {
-            color: var(--neon-blue);
-            text-shadow: 0 0 10px var(--neon-blue);
-        }
-
+        .name { font-weight: bold; font-size: 1rem; letter-spacing: 1px; text-shadow: 0 0 5px var(--neon-blue); }
         .username { font-size: 0.75rem; color: #666; margin-top: 4px; }
 
-        .status-dot {
-            height: 8px;
-            width: 8px;
-            background-color: #00ff00;
-            border-radius: 50%;
-            box-shadow: 0 0 12px #00ff00;
-            animation: blink 1.5s infinite;
-        }
-
+        .status-dot { height: 8px; width: 8px; background-color: #00ff00; border-radius: 50%; box-shadow: 0 0 12px #00ff00; animation: blink 1.5s infinite; }
         @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
 
-        .official-tag {
+        .tag-blue {
             font-size: 0.65rem;
             color: var(--neon-blue);
             border: 1px solid var(--neon-blue);
             padding: 2px 8px;
             border-radius: 20px;
             box-shadow: 0 0 8px rgba(0, 210, 255, 0.3);
+            font-weight: bold;
         }
 
         .back-btn {
             margin-top: 40px;
-            font-size: 0.8rem;
-            color: #666;
+            font-size: 0.85rem;
+            color: var(--neon-blue);
             text-decoration: none;
             transition: 0.3s;
             letter-spacing: 2px;
-            border-bottom: 1px solid transparent;
-        }
-        .back-btn:hover { 
-            color: var(--neon-blue); 
-            border-bottom: 1px solid var(--neon-blue);
+            font-weight: bold;
             text-shadow: 0 0 10px var(--neon-blue);
         }
     </style>
 </head>
 <body>
 
-    <div class="network-container">
-        <h1>⚡ 𝗡𝗘𝗧𝗪𝗢𝗥𝗞 ⚡</h1>
+<video autoplay muted loop playsinline id="bg-video">
+    <source src="bg.mp4" type="video/mp4">
+</video>
 
-        <div class="section-title">🤖 PREMIUM BOTS</div>
-        
-        <a href="https://t.me/hyperbanning_bot" class="link-card">
-            <div class="info-grp">
-                <span class="name">BASIC BANNING Bot</span>
-                <span class="username">@sparkpr3m1um_bot</span>
-            </div>
-            <div class="status-dot"></div>
-        </a>
+<div class="network-container">
+    <h1>⚡ 𝗡𝗘𝗧𝗪𝗢𝗥𝗞 ⚡</h1>
 
-        <a href="https://t.me/existenceinfo_bot" class="link-card">
-            <div class="info-grp">
-                <span class="name">LOCATION IP Bot</span>
-                <span class="username">@hyperbanning_bot</span>
-            </div>
-            <div class="status-dot"></div>
-        </a>
+    <div class="section-title">🤖 ᴘʀᴇᴍɪᴜᴍ ʙᴏᴛs ⚠️</div>
+    
+    <a href="https://t.me/existenceinfo_bot" class="link-card">
+        <div class="info-grp">
+            <span class="name">EXISTENCE INFO Bot</span>
+            <span class="username">@existenceinfo_bot</span>
+        </div>
+        <div class="status-dot"></div>
+    </a>
 
-        <a href="https://t.me/Comfuker_bot" class="link-card">
-            <div class="info-grp">
-                <span class="name">IG METHOD Bot</span>
-                <span class="username">@Comfuker_bot</span>
-            </div>
-            <div class="status-dot"></div>
-        </a>
+    <a href="https://t.me/hyperbanning_bot" class="link-card">
+        <div class="info-grp">
+            <span class="name">BASIC BANNING Bot</span>
+            <span class="username">@sparkpr3m1um_bot</span>
+        </div>
+        <div class="status-dot"></div>
+    </a>
 
-        <div class="section-title">📢 CHANNELS</div>
+    <a href="https://t.me/Comfuker_bot" class="link-card">
+        <div class="info-grp">
+            <span class="name">IG METHOD Bot</span>
+            <span class="username">@Comfuker_bot</span>
+        </div>
+        <div class="status-dot"></div>
+    </a>
 
-        <a href="https://t.me/proxydominates" class="link-card">
-            <div class="info-grp">
-                <span class="name">Proxy Dominates</span>
-                <span class="username">@proxydominates</span>
-            </div>
-            <span class="official-tag">OFFICIAL</span>
-        </a>
+    <div class="section-title">📢 𝐂𝐇𝐀𝐍𝐍𝐄𝐋𝐒</div>
 
-        <a href="https://t.me/midnight_xaura" class="link-card">
-            <div class="info-grp">
-                <span class="name">Midnight Xaura</span>
-                <span class="username">@midnight_xaura</span>
-            </div>
-        </a>
+    <a href="https://t.me/proxydominates" class="link-card">
+        <div class="info-grp">
+            <span class="name">𝐏𝐑𝐎𝐗𝐘 𝐃𝐎𝐌𝐈𝐍𝐀𝐓𝐄𝐒</span>
+            <span class="username">@proxydominates</span>
+        </div>
+        <span class="tag-blue">𝗢𝗙𝗙𝗜𝗖𝗜𝗔𝗟</span>
+    </a>
 
-        <a href="https://t.me/proxymethodss" class="link-card">
-            <div class="info-grp">
-                <span class="name">Proxy Methods</span>
-                <span class="username">@proxymethodss</span>
-            </div>
-        </a>
+    <a href="https://t.me/midnight_xaura" class="link-card">
+        <div class="info-grp">
+            <span class="name">𝐌𝐈𝐃𝐍𝐈𝐆𝐇𝐓 𝐗 𝐀𝐔𝐑𝐀</span>
+            <span class="username">@midnight_xaura</span>
+        </div>
+        <span class="tag-blue">𝗫𝗠𝗟 & 𝗣𝗙𝗣</span>
+    </a>
 
-        <div class="section-title">🛡️ BACKUP</div>
-        <a href="https://t.me/proxyinxc" class="link-card" style="border-style: dashed;">
-            <div class="info-grp">
-                <span class="name">Main Backup</span>
-                <span class="username">@proxyinxc</span>
-            </div>
-        </a>
+    <a href="https://t.me/proxymethodss" class="link-card">
+        <div class="info-grp">
+            <span class="name">𝐏𝐑𝐎𝐗𝐘 𝐌𝐄𝐓𝐇𝐎𝐃𝐒</span>
+            <span class="username">@proxymethodss</span>
+        </div>
+    </a>
 
-        <a href="index.html" class="back-btn">[ RETURN TO PROFILE ]</a>
-    </div>
+    <div class="section-title">🛡️ 𝐁𝐀𝐂𝐊 𝐔𝐏</div>
+    <a href="https://t.me/" class="link-card" style="border-style: dashed;">
+        <div class="info-grp">
+            <span class="name">𝗠𝗔𝗜𝗡 𝗕𝗔𝗖𝗞𝗨𝗣</span>
+            <span class="username">https://t.me/proxyxbackup</span>
+        </div>
+    </a>
+
+    <a href="index.html" class="back-btn">[ RETURN TO PROFILE ]</a>
+</div>
 
 </body>
-</html>
+    </html>
